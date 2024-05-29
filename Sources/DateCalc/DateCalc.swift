@@ -160,7 +160,7 @@ public func dateAfterDays(country: String, region: String, subregion: String,
     return (resultDate, dayType)
 }
 
-
+/// Количество дней между датами
 public func daysBetween(startDate: Date, endDate: Date) -> Int {
     let calendar = Calendar.current
     let start = calendar.startOfDay(for: startDate)
@@ -169,8 +169,36 @@ public func daysBetween(startDate: Date, endDate: Date) -> Int {
     return components.day ?? 0
 }
 
+/// String date from Unix date
+public func dateTimeString(from unixTime: Int) -> String {
+    let date = Date(timeIntervalSince1970: Double(unixTime))
+    let formatter = DateFormatter()
+    formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+    return formatter.string(from: date)
+}
 
+public func dateString(from unixTime: Int) -> String {
+    let date = Date(timeIntervalSince1970: Double(unixTime))
+    let formatter = DateFormatter()
+    formatter.dateStyle = .short
+    formatter.timeStyle = .none
+    return formatter.string(from: date)
+}
 
+public func dateStringOptional(from unixTime: Int?) -> String {
+    guard let unixTime else { return "- - - -" }
+    if unixTime <= 0{
+        return "- <<< - -"
+    }
+
+    let date = Date(timeIntervalSince1970: Double(unixTime))
+    let formatter = DateFormatter()
+    formatter.dateStyle = .short
+    formatter.timeStyle = .none
+    return formatter.string(from: date)
+}
+
+/// Пытается получить дату из любой строки
 public func safeDateFrom(stringDate: String?) -> Date {
     let formatter = DateFormatter()
     formatter.locale = .current
