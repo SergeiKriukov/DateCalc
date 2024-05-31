@@ -110,6 +110,13 @@ public extension Date {
         dateFormatter.dateFormat = "dd.MM.yyyy"
         return dateFormatter.string(from: self)
     }
+    
+    /// "dd.MM.yyyy HH:mm"
+    var shortFormatHM: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd.MM.yyyy HH:mm"
+        return dateFormatter.string(from: self)
+    }
 
     /// "yyyy-MM-dd HH:mm:ss"
     var serverFormat: String {
@@ -197,9 +204,37 @@ public extension Date {
     }
     
     var endOfDay: Date {
-        Calendar.current.date(byAdding: DateComponents(day: 1, minute: -1), to: self.startOfDay)!
+        Calendar.current.date(
+            byAdding: DateComponents(
+                day: 1,
+                minute: -1
+            ),
+            to: self.startOfDay
+        )!
     }
 
+    /// Возвращает дату без минут, для расчёта количества дней
+    var zeroHours: Date {
+        var components = Calendar.current.dateComponents(
+            [
+                .year,
+                .month,
+                .day,
+                .hour,
+                .minute,
+                .second
+            ],
+            from: self
+        )
+        components.hour = 0
+        components.minute = 0
+        components.second = 0
+        components.nanosecond = 0
+        // fromDate - дата, от которой считаем дни, с 0:00:00,000
+        return Calendar.current.date(from: components)!
+    }
+
+    
     func byAddingMinutes(_ minutes: Int) -> Date {
         Calendar.current.date(byAdding: DateComponents(minute: minutes), to: self)!
     }

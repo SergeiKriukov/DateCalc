@@ -198,6 +198,48 @@ public func dateStringOptional(from unixTime: Int?) -> String {
     return formatter.string(from: date)
 }
 
+public func timeString(from unixTime: Int) -> String {
+    let date = Date(timeIntervalSince1970: Double(unixTime))
+    let formatter = DateFormatter()
+    formatter.dateStyle = .none
+    formatter.timeStyle = .short
+    return formatter.string(from: date)
+}
+
+public func dateFromServerDate(stringDate: String?) -> String {
+    guard let stringDate else { return "" }
+    let formatter = DateFormatter()
+    formatter.locale = .current
+    formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+    let date = formatter.date(from: stringDate)
+    return dateOnlyString(from: date) + " " + timeOnlyString(from: date)
+}
+
+/// Возвращает дату или заглушку "-.-.-"
+public func dateOrStubFrom(serverDate: String?, stub: String) -> String {
+    guard let serverDate else { return stub }
+    let date = safeDateFrom(stringDate: serverDate)
+    return dateOnlyString(from: date)
+}
+
+public func dateOnlyFromServerDate(stringDate: String?) -> String {
+    guard let stringDate else { return "" }
+    let formatter = DateFormatter()
+    formatter.locale = .current
+    formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+    let date = formatter.date(from: stringDate)
+    return dateOnlyString(from: date)
+}
+
+public func timeOnlyFromServerDate(stringDate: String?) -> String {
+    guard let stringDate else { return "" }
+    let formatter = DateFormatter()
+    formatter.locale = .current
+    formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+    let date = formatter.date(from: stringDate)
+    return timeOnlyString(from: date)
+}
+
 /// Пытается получить дату из любой строки
 public func safeDateFrom(stringDate: String?) -> Date {
     let formatter = DateFormatter()
@@ -215,6 +257,41 @@ public func safeDateFrom(stringDate: String?) -> Date {
         }
     }
 }
+
+public func dateFromParserString(stringDate: String?) -> Date? {
+    guard let date = stringDate else { return nil }
+    let formatter = DateFormatter()
+    formatter.locale = .current
+    formatter.dateFormat = "dd.MM.yyyy"
+    return formatter.date(from: date)
+}
+
+public func dateTimeFromParserString(stringDate: String?) -> Date? {
+    guard let date = stringDate else { return nil }
+    let formatter = DateFormatter()
+    formatter.locale = .current
+    formatter.dateFormat = "dd.MM.yyyy HH:mm"
+    return formatter.date(from: date)
+}
+
+
+public func dateFromServerString(stringDate: String?) -> Date? {
+    guard let date = stringDate else { return nil }
+    let formatter = DateFormatter()
+    formatter.locale = .current
+    formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+    return formatter.date(from: date)
+}
+
+/// Сколько дней между датой в сервер формате ("yyyy-MM-dd HH:mm:ss")  и сегодня
+public func daysToday(from serverDate: String?) -> Int {
+    guard let date = dateFromServerString(stringDate: serverDate) else { return 0 }
+    let calendar = Calendar.current
+    
+    let components = calendar.dateComponents( [.day], from: date.zeroHours, to: Date().zeroHours )
+    return components.day ?? 0
+}
+
 
 /// Склоняет дни: день, дня, дней
 public func corrected(days: Int) -> LocalizedStringKey {
@@ -315,6 +392,23 @@ public func corrected(months: Int) -> LocalizedStringKey {
     }
     return correct
 }
+
+//
+func dateOnlyString(from date: Date?) -> String {
+    let formatter = DateFormatter()
+    formatter.dateStyle = .short
+    formatter.timeStyle = .none
+    guard let date else { return "-.-.-" }
+    return formatter.string(from: date)
+}
+func timeOnlyString(from date: Date?) -> String {
+    let formatter = DateFormatter()
+    formatter.dateStyle = .none
+    formatter.timeStyle = .short
+    guard let date else { return "-:-" }
+    return formatter.string(from: date)
+}
+
 
 // Не используются
 //func fetchHolidays(countryCode: String, year: Int) {
