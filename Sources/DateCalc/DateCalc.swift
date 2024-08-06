@@ -73,7 +73,7 @@ public func daysBetweenDates(country: String, region: String, subregion: String,
     // Заполнение массива реальных рабочих дней между начальной и конечной датами
     current = startDate.nextDay
     while current.zeroHours <= endDate.zeroHours {
-        if current.isWorking {
+        if dateManager.isRealWorking(current.zeroHours) {
             realWorkingDays.append(current)
         }
         current = current.nextDay
