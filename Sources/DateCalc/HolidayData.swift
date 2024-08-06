@@ -31,6 +31,23 @@ public final class HolidayData {
             SpecialDay(stringDate: "2024-12-28", isWorking: true),
             SpecialDay(stringDate: "2024-12-30", isWorking: false),
             SpecialDay(stringDate: "2024-12-31", isWorking: false),
+            SpecialDay(stringDate: "2025-01-01", isWorking: false),
+            SpecialDay(stringDate: "2025-01-02", isWorking: false),
+            SpecialDay(stringDate: "2025-01-03", isWorking: false),
+            SpecialDay(stringDate: "2025-01-06", isWorking: false),
+            SpecialDay(stringDate: "2025-01-07", isWorking: false),
+            SpecialDay(stringDate: "2025-01-08", isWorking: false),
+            SpecialDay(stringDate: "2025-05-01", isWorking: false),
+            SpecialDay(stringDate: "2025-05-02", isWorking: false),
+            SpecialDay(stringDate: "2025-05-08", isWorking: false),
+            SpecialDay(stringDate: "2025-05-09", isWorking: false),
+            SpecialDay(stringDate: "2025-06-12", isWorking: false),
+            SpecialDay(stringDate: "2025-06-13", isWorking: false),
+            SpecialDay(stringDate: "2025-11-01", isWorking: true),
+            SpecialDay(stringDate: "2025-11-03", isWorking: false),
+            SpecialDay(stringDate: "2025-11-04", isWorking: false),
+            SpecialDay(stringDate: "2025-12-31", isWorking: false),
+
         ]
     }
 
