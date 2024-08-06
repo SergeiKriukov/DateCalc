@@ -55,14 +55,14 @@ public func daysBetweenDates(country: String, region: String, subregion: String,
 
 
     // Заполнение массива всех дней между начальной и конечной датами
-    var current = startDate.nextDay
+    var current = startDate
     while current < endDate {
         allDays.append(current)
         current = current.nextDay
     }
 
     // Заполнение массива рабочих дней между начальной и конечной датами
-    current = startDate.nextDay
+    current = startDate
     while current < endDate {
         if current.isWorking {
             workingDays.append(current)
@@ -71,21 +71,15 @@ public func daysBetweenDates(country: String, region: String, subregion: String,
     }
 
     // Заполнение массива реальных рабочих дней между начальной и конечной датами
-    current = startDate.nextDay
+    current = startDate
     while current < endDate {
         if current.isWorking {
             realWorkingDays.append(current)
         }
         current = current.nextDay
     }
-
     
-    
-    
-    
-    
-       // Пока возвращаем заглушки
-       return (daysDifference, allDays, workingDays, realWorkingDays, false, nil)
+    return (daysDifference, allDays, workingDays, realWorkingDays, false, nil)
 }
 
 /// Супер-Функция для определения даты через определенное количество дней
