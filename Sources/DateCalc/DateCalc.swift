@@ -37,7 +37,7 @@ public func daysBetweenDates(country: String, region: String, subregion: String,
     
     // Разница между датами в днях
     // Не имеет смысла, если мы считаем все дни, на их основе можно получить это число
-    let daysDifference = calendar.dateComponents([.day, .month, .year], from: startDate, to: endDate).day ?? 0
+    let daysDifference = calendar.dateComponents([.day], from: startDate, to: endDate).day ?? 0
     
     // Заполнение массива всех дней между начальной и конечной датами
 //    for i in 0...daysDifference {
@@ -159,7 +159,7 @@ public func daysBetween(startDate: Date, endDate: Date) -> Int {
     let calendar = Calendar.current
     let start = calendar.startOfDay(for: startDate)
     let end = calendar.startOfDay(for: endDate)
-    let components = calendar.dateComponents([.day, .month, .year], from: start, to: end)
+    let components = calendar.dateComponents([.day], from: start, to: end)
     return components.day ?? 0
 }
 
