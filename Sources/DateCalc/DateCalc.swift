@@ -154,6 +154,14 @@ public func dateAfterDays(country: String, region: String, subregion: String,
     return (resultDate, dayType)
 }
 
+public func nextWorkingAfter(_ date: Date) -> Date {
+    var current = date
+    while !DateManager.shared.isRealWorking(current) {
+        current = current.nextDay
+    }
+    return current
+}
+
 /// Количество дней между датами
 public func daysBetween(startDate: Date, endDate: Date) -> Int {
     let calendar = Calendar.current
