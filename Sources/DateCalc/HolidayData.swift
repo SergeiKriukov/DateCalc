@@ -10,8 +10,43 @@ public final class HolidayData {
 
     // Дни, которые отличаются от других - рабочие выходные и нерабочие будни
     // пока вносятся вручную
+    
+//    Пример формата:
+//    Перенести в 2023 году следующие выходные дни:
+//    с воскресенья 1 января на пятницу 24 февраля;
+//    с воскресенья 8 января на понедельник 8 мая.
+//    - это значит что день 2023-02-24 был рабочим, станет выходным:
+ //   SpecialDay(stringDate: "2023-02-24", isWorking: false),
+    // при этом 1 января был выходным, но это официальный праздник, поэтому его перенесли
+    
+    
     func composeSpecialDays() {
         specialDays = [
+            SpecialDay(stringDate: "2015-01-09", isWorking: false),
+            SpecialDay(stringDate: "2015-05-04", isWorking: false),
+            SpecialDay(stringDate: "2016-05-03", isWorking: false),
+            SpecialDay(stringDate: "2016-03-07", isWorking: false),
+            SpecialDay(stringDate: "2016-02-22", isWorking: false),
+            SpecialDay(stringDate: "2017-02-24", isWorking: false),
+            SpecialDay(stringDate: "2017-05-08", isWorking: false),
+            SpecialDay(stringDate: "2018-03-09", isWorking: false),
+            SpecialDay(stringDate: "2018-05-02", isWorking: false),
+            SpecialDay(stringDate: "2018-04-30", isWorking: false),
+            SpecialDay(stringDate: "2018-06-11", isWorking: false),
+            SpecialDay(stringDate: "2018-12-31", isWorking: false),
+            SpecialDay(stringDate: "2019-05-02", isWorking: false),
+            SpecialDay(stringDate: "2019-05-03", isWorking: false),
+            SpecialDay(stringDate: "2019-05-10", isWorking: false),
+            SpecialDay(stringDate: "2020-05-04", isWorking: false),
+            SpecialDay(stringDate: "2020-05-05", isWorking: false),
+            SpecialDay(stringDate: "2021-11-05", isWorking: false),
+            SpecialDay(stringDate: "2021-12-31", isWorking: false),
+            SpecialDay(stringDate: "2021-02-22", isWorking: false),
+            SpecialDay(stringDate: "2022-05-03", isWorking: false),
+            SpecialDay(stringDate: "2022-05-10", isWorking: false),
+            SpecialDay(stringDate: "2022-03-07", isWorking: false),
+            SpecialDay(stringDate: "2023-02-24", isWorking: false),
+            SpecialDay(stringDate: "2023-05-08", isWorking: false),
             SpecialDay(stringDate: "2024-01-01", isWorking: false),
             SpecialDay(stringDate: "2024-01-02", isWorking: false),
             SpecialDay(stringDate: "2024-01-03", isWorking: false),
