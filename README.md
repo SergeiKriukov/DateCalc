@@ -1,7 +1,6 @@
 # DateCalc
 
-Скриншот...
-
+<img width="788" alt="image" src="https://github.com/user-attachments/assets/ea4eef62-def0-4ed0-ab83-0f310a8a2ef5">
 
 ## Example
 
