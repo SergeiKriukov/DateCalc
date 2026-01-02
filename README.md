@@ -5,7 +5,7 @@
 [![Swift](https://img.shields.io/badge/Swift-5.10+-orange.svg)](https://swift.org)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-Библиотека для юридически значимого подсчёта дней (календарных, рабочих), часов (общих, рабочих) с учётом российских праздников и переносов выходных дней.
+Библиотека для юридически значимого подсчёта дней (календарных, рабочих) с учётом российских праздников и переносов выходных дней.
 
 <img width="788" alt="image" src="https://github.com/user-attachments/assets/ea4eef62-def0-4ed0-ab83-0f310a8a2ef5">
 

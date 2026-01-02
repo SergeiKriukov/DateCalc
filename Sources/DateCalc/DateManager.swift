@@ -94,12 +94,27 @@ public final class DateManager {
 
     /// для реальных рабочих дней
     public func isRealWorking(_ date: Date) -> Bool {
-        if isWorking(date) && !holidayStrings.contains(date.shortServerFormat) {
+        let dateString = date.shortServerFormat
+        let isHoliday = holidayStrings.contains(dateString)
+        let isSpecialWorking = workingStrings.contains(dateString)
+        let isWeekdayWorking = isWorking(date)
+        
+        print("🔍 isRealWorking check:")
+        print("   Date: \(dateString)")
+        print("   Is weekday (Mon-Fri): \(isWeekdayWorking)")
+        print("   Is in holidayStrings: \(isHoliday)")
+        print("   Is in workingStrings: \(isSpecialWorking)")
+        print("   holidayStrings count: \(holidayStrings.count)")
+        
+        if isWeekdayWorking && !isHoliday {
+            print("   → Result: WORKING (weekday, not holiday)")
             return true
         }
-        if !isWorking(date) && workingStrings.contains(date.shortServerFormat) {
+        if !isWeekdayWorking && isSpecialWorking {
+            print("   → Result: WORKING (weekend, but special working day)")
             return true
         }
+        print("   → Result: NOT WORKING")
         return false
     }
 
